@@ -6,7 +6,7 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:14:55 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/12 20:16:58 by amejia           ###   ########.fr       */
+/*   Updated: 2023/01/13 19:31:14 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,20 @@ static int pseudolog10(int n)
 	return (1+pseudolog10(n/10));
 }
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+size_t	ft_strlcpy(char *dest, char *src, size_t size)
 {
 	unsigned int		counter;
 	unsigned int		size_src;
-	unsigned int		size_dest;
-
+	
 	size_src = ft_strlen(src);
-	size_dest = ft_strlen(dest);
 	counter = 0;
-	while (counter < size_dest)
+	while (counter < size && counter <= size_src)
 	{
-		if (*dest == '\0')
-			break ;
-		if (counter < size - 1 && counter < size_src - 1)
+		if (counter < size - 1 && counter < size_src)
 			*dest = *src;
 		else
 			*dest = '\0';
-		if (counter < size_dest -1)
+		if (counter < size - 1)
 			dest++;
 		if (counter < size_src - 1)
 			src++;
@@ -64,6 +60,9 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	}
 	return (size_src);
 }
+
+
+
 
 char *ft_itoa(int n)
 {
@@ -94,28 +93,28 @@ char *ft_itoa(int n)
 	return (to_return);
 }
 
-int	ft_strlcat(char *s1, char *s2, unsigned int nb)
+size_t	ft_strlcat(char *dest, char *src, size_t dstsize)
 {
-	unsigned int	len_s1;
-	unsigned int	counter2;
+	unsigned int	len_dest;
+	unsigned int	counter;
 	unsigned int	to_return;
 
-	len_s1 = ft_strlen(s1);
-	to_return = ft_strlen(s1) + ft_strlen(s2);
-	counter2 = 0;
-	while (*s1 != '\0' )
+	len_dest = ft_strlen(dest);
+	to_return = ft_strlen(dest) + ft_strlen(src);
+
+	while (*dest != '\0' )
 	{
-		s1++;
-		counter2++;
+		dest++;
 	}
-	while ((*s2 != '\0') && (counter2 < nb - 1))
+	counter = 0;
+	while ((*src != '\0') && (counter < dstsize - len_dest - 2))
 	{
-		*s1 = *s2;
-		s1++;
-		s2++;
-		counter2++;
+		*dest = *src;
+		dest++;
+		src++;
+		counter++;
 	}
-	if (counter2 >= len_s1)
-		*s1 = '\0';
+	if (counter >= 0 && dstsize > 0 && len_dest >= dstsize)
+		*dest = '\0';
 	return (to_return);
 }

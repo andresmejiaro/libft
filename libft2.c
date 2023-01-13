@@ -6,7 +6,7 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:14:55 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/12 20:01:33 by amejia           ###   ########.fr       */
+/*   Updated: 2023/01/13 14:18:33 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 
 int	ft_toupper(int c)
 {
-	return (c + 'A' - 'a');
+	if(c <= 'z' && c >= 'a')
+		return (c + 'A' - 'a');
+	return (c);
 }
 
 int	ft_tolower(int c)
 {
-	return (c + 'a' - 'A');
+	if(c <= 'Z' && c >= 'A')
+		return (c + 'a' - 'A');
+	return (c);
 }
 
 void	ft_putchar_fd(char c,int fd)

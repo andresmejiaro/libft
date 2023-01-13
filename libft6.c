@@ -6,37 +6,23 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:06:01 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/12 21:10:43 by amejia           ###   ########.fr       */
+/*   Updated: 2023/01/13 15:23:50 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(void *s, int c, unsigned int n)
-{
-	unsigned int counter;
-
-	counter = 0;
-	while (*((char *)s) != '\0' && counter < n)
-	{
-		if (*((char *)s) == c)
-			return (s);
-		counter++;
-		s++;
-	}
-	return (0);
-}
-
-int ft_strncmp(char *s1, char *s2, unsigned int n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	unsigned int counter;
 
 	counter = 0;
 	while (counter < n)
 	{
-		if (*((char *)(s1 + counter)) != *((char *)(s2 + counter)))
-			return (*((char *)(s1 + counter)) - *((char *)(s2 + counter)));
+		if (*((char*)s) == (unsigned char)c)
+			return ((void *)s);
 		counter++;
+		s++;
 	}
 	return (0);
 }
@@ -84,4 +70,17 @@ char	*ft_strdup(char *src)
 	dest = (char *) malloc (ft_strlen(src) * sizeof (char));
 	ft_strlcpy(dest,src,ft_strlen(src));
 	return (dest);
+}
+
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
+{	
+	unsigned int counter;
+
+	counter = 0;
+	while (((char *)s1)[counter]== ((char *)s2)[counter] && counter < n)
+		counter++;
+	if (counter == n)
+		return (0);
+	else
+		return (((char *)s2)[counter] - ((char *)s1)[counter]);
 }
