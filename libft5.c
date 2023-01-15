@@ -6,7 +6,7 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 20:12:52 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/13 16:14:23 by amejia           ###   ########.fr       */
+/*   Updated: 2023/01/15 23:09:33 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ void *ft_memmove(void *dst, const void *src, size_t len)
 {
 	unsigned int 	counter;
 
+	if(len == 0 || (dst == 0 && src == 0))
+		return (dst);
 	counter = 0;
 	if(dst < src)
 	{

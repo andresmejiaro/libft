@@ -6,7 +6,7 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:06:01 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/13 15:23:50 by amejia           ###   ########.fr       */
+/*   Updated: 2023/01/16 00:35:49 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	counter = 0;
 	while (counter < n)
 	{
-		if (*((char*)s) == (unsigned char)c)
+		if (*((unsigned char*)s) == (unsigned char)c)
 			return ((void *)s);
 		counter++;
 		s++;
@@ -31,6 +31,7 @@ char	*ft_strnstr(char *s1, char *s2, unsigned int n)
 {
 	char				*s1_aux;
 	char				*s2_aux;
+	unsigned int		n2;
 
 	if (ft_strlen(s2) == 0)
 		return (s1);
@@ -40,14 +41,16 @@ char	*ft_strnstr(char *s1, char *s2, unsigned int n)
 		{
 			s1_aux = s1;
 			s2_aux = s2;
-			while (*s1_aux == *s2_aux)
+			n2 = n;
+			while (*s1_aux == *s2_aux && n2 > 0)
 			{
-				s1_aux++;
-				s2_aux++;
-				if (*s2_aux == '\0')
+				if (*(s2_aux+1) == '\0')
 					return (s1);
 				if (*s1_aux == '\0')
 					return (0);
+				s1_aux++;
+				s2_aux++;
+				n2--;
 			}
 		}
 		s1++;
@@ -58,7 +61,14 @@ char	*ft_strnstr(char *s1, char *s2, unsigned int n)
 
  void *ft_calloc(unsigned int count, unsigned int size)
 {
-	return (malloc(count * size));	
+	void *mem;
+		
+	mem = malloc(count * size);
+	if(mem == 0){
+		return(0);
+	}
+	ft_bzero(mem,count*size);
+	return (mem);	
 }
 
 char	*ft_strdup(char *src)
@@ -77,10 +87,10 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	unsigned int counter;
 
 	counter = 0;
-	while (((char *)s1)[counter]== ((char *)s2)[counter] && counter < n)
+	while (((unsigned char *)s1)[counter] == ((unsigned char *)s2)[counter] && counter < n)
 		counter++;
 	if (counter == n)
 		return (0);
 	else
-		return (((char *)s2)[counter] - ((char *)s1)[counter]);
+		return (((unsigned char *)s1)[counter] - ((unsigned char *)s2)[counter]);
 }

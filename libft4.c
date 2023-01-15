@@ -6,7 +6,7 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:14:55 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/13 19:31:14 by amejia           ###   ########.fr       */
+/*   Updated: 2023/01/15 21:57:54 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int ft_strncmp(char *s1, char *s2, unsigned int n)
 	counter = 0;
 	while (counter < n)
 	{
-		if (*(s1+counter) != *(s2+counter))
-			return (*(s1 + counter) - *(s2 + counter));
+		if (*(s1+counter) != *(s2+counter) || *(s1+counter) == '\0' || *(s2+counter) == '\0')
+			return (*((unsigned char *)(s1 + counter)) - *((unsigned char *)(s2 + counter)));
 		counter++;
 	}
 	return (0);
@@ -30,7 +30,7 @@ int ft_strncmp(char *s1, char *s2, unsigned int n)
 
 static int pseudolog10(int n)
 {
-	if (n == -2147483646)
+	if (n == -2147483648)
 		return(11);
 	if (n < 0)
 		return (1+ pseudolog10(-n));
@@ -74,9 +74,16 @@ char *ft_itoa(int n)
 	counter = 0;
 	string_size = pseudolog10(n);
 	to_return=(char *)malloc((string_size+1) * sizeof(char));
-	work_head = to_return + string_size-1;
-	if (n == -2147483646)
-		ft_strlcpy(to_return, "-2147483646", string_size);	
+	if(to_return == 0)
+		return (0);
+	work_head = to_return + string_size;
+	if (n == -2147483647 -1)
+	{
+		ft_strlcpy(to_return, "-2147483648", string_size+1);
+		return(to_return);	
+	}
+	*work_head ='\0';
+	work_head--;
 	if (n < 0)
 	{
 		n = -n;
@@ -93,28 +100,24 @@ char *ft_itoa(int n)
 	return (to_return);
 }
 
+
+
 size_t	ft_strlcat(char *dest, char *src, size_t dstsize)
 {
 	unsigned int	len_dest;
-	unsigned int	counter;
-	unsigned int	to_return;
+	unsigned int	len_src;
 
+	len_src = ft_strlen(src);
 	len_dest = ft_strlen(dest);
-	to_return = ft_strlen(dest) + ft_strlen(src);
-
+	
+	if(dstsize < len_dest)
+	{
+		return (len_src+dstsize);
+	}	
 	while (*dest != '\0' )
 	{
 		dest++;
 	}
-	counter = 0;
-	while ((*src != '\0') && (counter < dstsize - len_dest - 2))
-	{
-		*dest = *src;
-		dest++;
-		src++;
-		counter++;
-	}
-	if (counter >= 0 && dstsize > 0 && len_dest >= dstsize)
-		*dest = '\0';
-	return (to_return);
+	ft_strlcpy(dest, src, dstsize - len_dest);
+	return (len_src+len_dest);
 }
