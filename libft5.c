@@ -6,38 +6,22 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 20:12:52 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/15 23:09:33 by amejia           ###   ########.fr       */
+/*   Updated: 2023/01/16 18:15:27 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 
-char	*ft_strjoin(int size, char **strs, char *sep)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		total_length;
-	int		counter;
-	char	*to_return;
+	char *to_return;
 
-	if (size == 0)
-		return ((char *)malloc(0));
-	total_length = 0;
-	counter = 0;
-	while (counter < size)
-	{
-		total_length = ft_strlen(strs[1]);
-		counter++;
-	}
-	total_length += (size-1) * ft_strlen(sep) ;
-	to_return = (char *)malloc (total_length);
-	counter = 0;
-	while (counter < size)
-	{
-		ft_strlcat(to_return, strs[counter],ft_strlen(to_return) + 1);
-		if (counter != size -1)
-			ft_strlcat(to_return, sep, ft_strlen(to_return) + ft_strlen(sep));
-		counter++;
-	}
+	to_return = malloc(ft_strlen(s1)+ft_strlen(s2)+1);
+	if(to_return == 0)
+		return (0);
+	ft_strlcpy(to_return,(char *)s1,-1);
+	ft_strlcat(to_return,(char *)s2,-1);
 	return (to_return);
 }
 

@@ -1,16 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft8.c                                           :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 19:58:55 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/16 23:30:31 by amejia           ###   ########.fr       */
+/*   Created: 2023/01/16 23:55:57 by amejia            #+#    #+#             */
+/*   Updated: 2023/01/16 23:56:01 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+// si una asignacion de memoria falla liberar lo anterior
+// malloc con sizeoof *char
 
 int	count_char(char *text, char find)
 {
@@ -37,7 +40,7 @@ char **ft_split(char *s, char c)
 	int		length;
 
 	n_lines = count_char (s, c) + 1;
-	matrix = (char **) malloc (n_lines * sizeof (int));
+	matrix = (char **) malloc (n_lines * sizeof (char *));
 	if (matrix == 0)
 		return (0);
 	iterator = 0;
@@ -65,40 +68,4 @@ char **ft_split(char *s, char c)
 	}
 	matrix[iterator] = 0;
 	return (matrix);
-}
-
-char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
-{
-	int length_s;
-	int counter;
-	char *to_return;
-
-	length_s = ft_strlen((char *)s);
-	to_return = (char *)malloc(length_s+1);
-	if (to_return == 0)
-		return (0);
-	counter = 0;
-	while (counter < length_s)
-	{
-		to_return[counter]=(*f)(counter,s[counter]);
-		counter++;	
-	}
-	to_return[counter]='\0';
-	return (to_return);
-}
-
-void ft_striteri(char *s, void (*f)(unsigned int,char*))
-{
-	int length_s;
-	int counter;
-	char *to_return;
-
-	length_s = ft_strlen(s);
-	to_return = (char *)malloc(length_s);
-	counter = 0;
-	while (counter < length_s)
-	{
-		(*f)(counter, s + counter);
-		counter++;	
-	}
 }

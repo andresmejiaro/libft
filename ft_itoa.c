@@ -1,56 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft4.c                                           :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 16:14:55 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/16 23:08:14 by amejia           ###   ########.fr       */
+/*   Created: 2023/01/16 23:54:02 by amejia            #+#    #+#             */
+/*   Updated: 2023/01/16 23:54:05 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int ft_strncmp(char *s1, char *s2, unsigned int n)
-{
-	unsigned int counter;
-
-	counter = 0;
-	while (counter < n)
-	{
-		if (*(s1+counter) != *(s2+counter) || *(s1+counter) == '\0' || *(s2+counter) == '\0')
-			return (*((unsigned char *)(s1 + counter)) - *((unsigned char *)(s2 + counter)));
-		counter++;
-	}
-	return (0);
-}
-
-
-
-
-
-size_t	ft_strlcpy(char *dest, char *src, size_t size)
-{
-	unsigned int		counter;
-	unsigned int		size_src;
-	
-	size_src = ft_strlen(src);
-	counter = 0;
-	while (counter < size && counter <= size_src)
-	{
-		if (counter < size - 1 && counter < size_src)
-			*dest = *src;
-		else
-			*dest = '\0';
-		if (counter < size - 1)
-			dest++;
-		if (counter < size_src - 1)
-			src++;
-		counter++;
-	}
-	return (size_src);
-}
 
 static int pseudolog10(int n)
 {
@@ -98,26 +58,4 @@ char *ft_itoa(int n)
 		work_head--;
 	}
 	return (to_return);
-}
-
-
-
-size_t	ft_strlcat(char *dest, char *src, size_t dstsize)
-{
-	unsigned int	len_dest;
-	unsigned int	len_src;
-
-	len_src = ft_strlen(src);
-	len_dest = ft_strlen(dest);
-	
-	if(dstsize < len_dest)
-	{
-		return (len_src+dstsize);
-	}	
-	while (*dest != '\0' )
-	{
-		dest++;
-	}
-	ft_strlcpy(dest, src, dstsize - len_dest);
-	return (len_src+len_dest);
 }
