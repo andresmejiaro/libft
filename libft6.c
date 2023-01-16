@@ -6,7 +6,7 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:06:01 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/16 00:35:49 by amejia           ###   ########.fr       */
+/*   Updated: 2023/01/16 15:48:01 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,10 @@ char	*ft_strdup(char *src)
 	char	*dest;
 
 	str_len = ft_strlen(src);
-	dest = (char *) malloc (ft_strlen(src) * sizeof (char));
-	ft_strlcpy(dest,src,ft_strlen(src));
+	dest = (char *) malloc ((ft_strlen(src) +1) * sizeof (char));
+	if (dest == 0)
+		return (0);	
+	ft_strlcpy(dest,src,ft_strlen(src)+1);
 	return (dest);
 }
 
