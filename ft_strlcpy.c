@@ -6,7 +6,7 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 23:56:47 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/16 23:56:49 by amejia           ###   ########.fr       */
+/*   Updated: 2023/01/17 14:07:45 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 size_t	ft_strlcpy(char *dest, char *src, size_t size)
 {
-	unsigned int		counter;
-	unsigned int		size_src;
-	
+	unsigned int	counter;
+	unsigned int	size_src;
+
 	size_src = ft_strlen(src);
 	counter = 0;
 	while (counter < size && counter <= size_src)

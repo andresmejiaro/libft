@@ -6,13 +6,13 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 23:55:03 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/16 23:55:06 by amejia           ###   ########.fr       */
+/*   Updated: 2023/01/17 13:59:25 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c,int fd)
+void	ft_putchar_fd(char c, int fd)
 {
-	write(fd,&c,1);
+	write(fd, &c, 1);
 }

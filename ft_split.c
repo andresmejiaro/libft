@@ -6,7 +6,7 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 23:55:57 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/16 23:56:01 by amejia           ###   ########.fr       */
+/*   Updated: 2023/01/17 16:40:27 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,57 +15,76 @@
 // si una asignacion de memoria falla liberar lo anterior
 // malloc con sizeoof *char
 
-int	count_char(char *text, char find)
+
+static int	count_lines(char *text, char find)
 {
 	int	counter;
-
+	
 	counter = 0;
 	while (*text != '\0')
 	{
-		if (*text == find)
+		if (*text != find && (*(text+1) == find || *(text+1) == '\0'))
 			counter++;
 		text++;
 	}
 	return (counter);
 }
 
+static char	*ft_min_str(char *s1, char *s2)
+{
+	if(s1==0 && s2 ==0)
+		return (0);
+	if (s1 == 0)
+		return (s2);
+	if (s2 == 0)
+		return (s1);
+	if(s1 < s2)
+		return (s1);
+	return (s2);
+}
+
+static int	ft_split_loop(char **matrix,char *s, int n_lines, char c)
+{
+	int		length;
+	int		iterator;
+	char 	*next_position;
+
+	iterator = 0;
+	while (iterator < n_lines)
+	{
+		next_position = ft_min_str(ft_strchr(s, c),ft_strchr(s, '\0'));
+		length = next_position - s;
+		if(length == 0)
+		{
+			s = next_position + 1;
+			continue;
+		}
+		matrix[iterator] = (char *)malloc(length + 1);
+		if(matrix[iterator]==0)
+			return(iterator);
+		ft_strlcpy(matrix[iterator], s, length + 1);
+		if (*next_position != '\n')
+			s = next_position + 1;
+		iterator++;
+	}
+	return(-1);
+}
+
 char **ft_split(char *s, char c)
 {
 	char    **matrix;
 	int		n_lines;
-	int		iterator;
-	char	*position;
-	char    *s2;
-	char	*next_position;
-	int		length;
-
-	n_lines = count_char (s, c) + 1;
-	matrix = (char **) malloc (n_lines * sizeof (char *));
+	int		error_asign;
+	
+	n_lines = count_lines (s, c);
+	matrix = (char **) ft_calloc ((n_lines + 1), sizeof (char *));
 	if (matrix == 0)
 		return (0);
-	iterator = 0;
-	s2=ft_strdup(s);
-	position = s2;
-	while (iterator < n_lines)
-	{
-		if(iterator < n_lines -1)
-			next_position = ft_strchr(position, c);
-		else 
-			next_position = ft_strchr(position, '\0');
-		length = next_position - position;
-		if(length == 0)
-		{
-			position = next_position +1;
-			n_lines--;
-			continue;
-		}
-		matrix[iterator]=(char *)malloc(length+1);
-		if(matrix[iterator]==0)
-			return (0);
-		ft_strlcpy(matrix[iterator],position,length+1);
-		position = next_position + 1;
-		iterator++;
-	}
-	matrix[iterator] = 0;
-	return (matrix);
+	error_asign=ft_split_loop(matrix,s,n_lines,c);
+	if (error_asign == -1)
+		return (matrix);
+	while(error_asign-- >= 0)
+		free(matrix[error_asign]);
+	free(matrix);
+	return (0);
 }

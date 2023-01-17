@@ -6,7 +6,7 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 23:54:29 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/16 23:54:32 by amejia           ###   ########.fr       */
+/*   Updated: 2023/01/17 13:48:33 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {	
-	unsigned int counter;
+	unsigned int	counter;
 
 	counter = 0;
-	while (((unsigned char *)s1)[counter] == ((unsigned char *)s2)[counter] && counter < n)
+	while (((unsigned char *)s1)[counter] == ((unsigned char *)s2)[counter] \
+		&& counter < n)
 		counter++;
 	if (counter == n)
 		return (0);
 	else
-		return (((unsigned char *)s1)[counter] - ((unsigned char *)s2)[counter]);
+		return (((unsigned char *)s1)[counter] - \
+		((unsigned char *)s2)[counter]);
 }

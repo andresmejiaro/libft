@@ -6,7 +6,7 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 23:56:35 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/16 23:56:37 by amejia           ###   ########.fr       */
+/*   Updated: 2023/01/17 14:06:25 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,10 @@ size_t	ft_strlcat(char *dest, char *src, size_t dstsize)
 
 	len_src = ft_strlen(src);
 	len_dest = ft_strlen(dest);
-	
-	if(dstsize < len_dest)
-	{
-		return (len_src+dstsize);
-	}	
+	if (dstsize < len_dest)
+		return (len_src + dstsize);
 	while (*dest != '\0' )
-	{
 		dest++;
-	}
 	ft_strlcpy(dest, src, dstsize - len_dest);
-	return (len_src+len_dest);
+	return (len_src + len_dest);
 }

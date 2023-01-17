@@ -6,36 +6,35 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 23:54:46 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/16 23:54:49 by amejia           ###   ########.fr       */
+/*   Updated: 2023/01/17 13:58:14 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned int 	counter;
+	unsigned int	counter;
 
-	if(len == 0 || (dst == 0 && src == 0))
+	if (len == 0 || (dst == 0 && src == 0))
 		return (dst);
-	counter = 0;
-	if(dst < src)
+	if (dst < src)
 	{
 		counter = 0;
 		while (counter < len)
 		{
-			*((char *)(dst+counter)) = *((char*)(src+counter));
+			*((char *)(dst + counter)) = *((char *)(src + counter));
 			counter++;
 		}
 	}
 	else
 	{
-		counter = len-1;
-		while (counter >=0)
+		counter = len - 1;
+		while (counter >= 0)
 		{
-			*((char *)(dst+counter)) = *((char*)(src+counter));
-			if (counter ==0)
-				break;
+			*((char *)(dst + counter)) = *((char *)(src + counter));
+			if (counter == 0)
+				break ;
 			counter--;
 		}
 	}

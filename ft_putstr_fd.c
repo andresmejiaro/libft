@@ -6,13 +6,13 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 23:55:46 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/16 23:55:49 by amejia           ###   ########.fr       */
+/*   Updated: 2023/01/17 14:00:57 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s,int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
 	while (*s != '\0')
 	{

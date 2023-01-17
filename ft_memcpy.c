@@ -6,20 +6,20 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 23:54:37 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/16 23:54:40 by amejia           ###   ########.fr       */
+/*   Updated: 2023/01/17 13:54:12 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	void            *to_return;
-	unsigned int    counter;
-	
-	if(dest == 0 && src ==0)
+	void			*to_return;
+	unsigned int	counter;
+
+	if (dest == 0 && src == 0)
 	{
-		return 0;	
+		return (0);
 	}
 		to_return = dest;
 	counter = 0;
@@ -28,6 +28,5 @@ void *ft_memcpy(void *dest, const void *src, size_t n)
 		*((char *)(dest + counter)) = *((char *)(src + counter));
 		counter++;
 	}
-
-	return to_return;
+	return (to_return);
 }
