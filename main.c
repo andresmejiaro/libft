@@ -204,8 +204,36 @@ char **ft_split(char *s, char c)
 	return (0);
 }
 
+void	ft_print_result(char const *s)
+{
+	int		len;
+
+	len = 0;
+	while (s[len])
+		len++;
+	write(1, s, len);
+}
+
+char	*ft_substr(char const *s, unsigned int start, unsigned int len)
+{
+	char	*to_return;
+	
+	if (ft_strlen(s) < start)
+		len =  0;
+	if (ft_strlen(s) - start < len)
+		len = ft_strlen(s) - start;
+	to_return = (char *)malloc((len + 1) * sizeof(char));
+	if (to_return == 0)
+		return (0);
+	if (start > ft_strlen(s))
+		ft_strlcpy(to_return, "", 0);
+	else
+		ft_strlcpy(to_return, (char *)(s + start), len + 1);
+	return (to_return);
+}
+
 int main(void)
 {	
-	ft_split("hello!", ' ');
-    
+	char *s = ft_substr("tripouille", 0, 42000);
+    int w=strcmp(s,"");
 }
