@@ -6,38 +6,31 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 23:57:38 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/17 14:36:54 by amejia           ###   ########.fr       */
+/*   Updated: 2023/01/18 18:25:34 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-void	ft_delete_char(char *str)
-{
-	while (*str != '\0')
-	{
-		*str = *(str + 1);
-		str++;
-	}
-}
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*end;
 	char	*s2;
 
-	s2 = ft_strdup((char *)s1);
-	if (s2 == 0)
-		return (0);
-	while (ft_strchr(set, (int)(*s2)) && *s2 != '\0')
-		ft_delete_char(s2);
-	if (ft_strlen(s2) == 0)
-		return (s2);
-	end = s2 + ft_strlen(s2) - 1;
-	while (ft_strchr(set, (int)(*end)) && ft_strlen(s2) > 0)
+	while (ft_strchr(set, (int)(*s1)) && *s1 != '\0')
+		s1++;
+	if (ft_strlen(s1) == 0)
+		return (ft_strdup((char *)s1));
+	end = (char *)s1 + ft_strlen(s1) - 1;
+	while (ft_strchr(set, (int)(*end)) && end - s1 > 0)
 	{
-		ft_delete_char(end);
 		end--;
 	}
+	s2 = ft_calloc((unsigned int)(end - s1) + 2, sizeof(char));
+	if (s2 == 0)
+		return (0);
+	ft_strlcpy(s2, (char *)s1, (unsigned int)(end - s1) + 2);
+	if (s2 == 0)
+		return (0);
 	return (s2);
 }
