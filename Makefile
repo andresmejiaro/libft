@@ -1,5 +1,7 @@
 NAME = libft.a
 
+CC = cc
+
 SRCS = ft_atoi.c ft_memchr.c ft_split.c ft_strncmp.c ft_bzero.c ft_memcmp.c \
 ft_strchr.c ft_strnstr.c ft_calloc.c ft_memcpy.c ft_strdup.c ft_strrchr.c ft_isalnum.c \
 ft_memmove.c ft_striteri.c ft_strtrim.c ft_isalpha.c ft_memset.c ft_strjoin.c ft_substr.c \
@@ -8,16 +10,18 @@ ft_memmove.c ft_striteri.c ft_strtrim.c ft_isalpha.c ft_memset.c ft_strjoin.c ft
 
 OBJS = ${SRCS:.c=.o}
 
-FLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 INCLUDE = libft.h
 
 all: $(NAME)  
 	
 
+%.o: %.c
+    $(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
+	ar -crs $(NAME) $@ 
+
 $(NAME): ${OBJS}
-	gcc -c $(SRCS) -Iinclude $(FLAGS)
-	ar -crs $(NAME) $(OBJS) $(INCLUDE)
 
 clean: 
 	rm -f ${OBJS}
@@ -27,5 +31,5 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean
+.PHONY: all clean fclean re
 
