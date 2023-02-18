@@ -6,22 +6,12 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 23:54:02 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/17 13:44:23 by amejia           ###   ########.fr       */
+/*   Updated: 2023/02/18 03:08:26 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	pseudolog10(int n)
-{
-	if (n == -2147483648)
-		return (11);
-	if (n < 0)
-		return (1 + pseudolog10(-n));
-	if (n <= 9)
-		return (1);
-	return (1 + pseudolog10(n / 10));
-}
+#include "ft_printf.h"
 
 int	memory_asignation(char **to_return, int n, int *string_size)
 {
