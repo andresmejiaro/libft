@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/18 20:19:30 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/28 20:57:37 by amejia           ###   ########.fr       */
+/*   Created: 2023/01/28 20:46:37 by amejia            #+#    #+#             */
+/*   Updated: 2023/01/28 20:48:03 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*to_return;
+	t_list	*mover;
 
-	to_return = (t_list *)malloc(sizeof(t_list));
-	if (to_return == 0)
-		return (0);
-	to_return->content = content;
-	to_return->next = 0;
-	return (to_return);
+	if (*lst == NULL)
+	{
+		*lst = new;
+		return ;
+	}
+	mover = *lst;
+	while (mover->next != NULL)
+		mover = mover -> next;
+	mover->next = new;
 }

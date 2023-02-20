@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_value_swap.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/18 20:19:30 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/28 20:57:37 by amejia           ###   ########.fr       */
+/*   Created: 2023/02/20 19:57:32 by amejia            #+#    #+#             */
+/*   Updated: 2023/02/20 20:01:33 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-t_list	*ft_lstnew(void *content)
+void	ft_value_swap_l(long *a, long *b)
 {
-	t_list	*to_return;
+	long	c;
 
-	to_return = (t_list *)malloc(sizeof(t_list));
-	if (to_return == 0)
-		return (0);
-	to_return->content = content;
-	to_return->next = 0;
-	return (to_return);
+	c = *a;
+	*a = *b;
+	*b = c;
+}
+
+void	ft_value_swap_i(int *a, int *b)
+{
+	int	c;
+
+	c = *a;
+	*a = *b;
+	*b = c;
 }
