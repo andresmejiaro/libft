@@ -6,7 +6,7 @@
 #    By: amejia <amejia@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 19:16:14 by amejia            #+#    #+#              #
-#    Updated: 2023/02/21 00:40:52 by amejia           ###   ########.fr        #
+#    Updated: 2023/02/21 10:32:07 by amejia           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ all: $(NAME)
 bonus: $(NAME) $(BONUS_OBJS)
 
 %.o: %.c
-    $(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 	ar -crs $(NAME) $@ 
 
 $(NAME): ${OBJS}
