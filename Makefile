@@ -6,7 +6,7 @@
 #    By: amejia <amejia@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 19:16:14 by amejia            #+#    #+#              #
-#    Updated: 2023/02/21 10:32:07 by amejia           ###   ########.fr        #
+#    Updated: 2023/02/23 20:14:34 by amejia           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ ft_toupper.c ft_isprint.c ft_putnbr_fd.c ft_strlen.c ft_itoa.c ft_putstr_fd.c \
 ft_strmapi.c ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c \
 ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c ft_printf.c ft_pseudolog.c ft_putnbrbase_int.c \
 ft_putnbrbase_long.c libft_utils.c tags_iusc_sym.c tags_pxX.c \
-ft_value_swap.c get_next_line.c
+ft_value_swap.c get_next_line.c ft_abs.c
 
 OBJS = ${SRCS:.c=.o}
 
