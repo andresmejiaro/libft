@@ -6,7 +6,7 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 20:09:21 by amejia            #+#    #+#             */
-/*   Updated: 2023/02/23 20:13:53 by amejia           ###   ########.fr       */
+/*   Updated: 2023/02/23 20:18:40 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,11 @@ int	ft_min(int a, int b)
 	if (a < b)
 		return (a);
 	return (b);
+}
+
+int	ft_max(int a, int b)
+{
+	if (a < b)
+		return (b);
+	return (a);
 }

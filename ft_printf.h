@@ -6,7 +6,7 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 19:06:52 by amejia            #+#    #+#             */
-/*   Updated: 2023/02/20 20:16:45 by amejia           ###   ########.fr       */
+/*   Updated: 2023/02/23 20:19:14 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,5 @@ void	tag_x(va_list va_ptr, int *nchar);
 void	tag_ux(va_list va_ptr, int *nchar);
 void	ft_putnbr_fd(int nb, int fd);
 void	ft_putunbr_fd(unsigned int nb, int fd);
-
 
 #endif
