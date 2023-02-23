@@ -6,7 +6,7 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 23:55:35 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/17 14:00:28 by amejia           ###   ########.fr       */
+/*   Updated: 2023/02/23 20:29:55 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,22 @@ void	ft_putnbr_fd(int nb, int fd)
 		ft_putnbr_fd(-nb, fd);
 	}
 	else if (nb < 10)
+	{
+		c = '0' + nb;
+		write(fd, &c, 1);
+	}
+	else
+	{
+		ft_putnbr_fd(nb / 10, fd);
+		ft_putnbr_fd(nb % 10, fd);
+	}
+}
+
+void	ft_putunbr_fd(unsigned int nb, int fd)
+{
+	char	c;
+
+	if (nb < 10)
 	{
 		c = '0' + nb;
 		write(fd, &c, 1);
