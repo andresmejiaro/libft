@@ -6,7 +6,7 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 23:55:57 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/17 23:38:12 by amejia           ###   ########.fr       */
+/*   Updated: 2023/03/06 17:23:40 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,17 @@ char	**ft_split(char *s, char c)
 		free(matrix[error_asign]);
 	free(matrix);
 	return (0);
+}
+
+void	ft_free_split(char **split)
+{
+	int	ct;
+
+	ct = 0;
+	while (split[ct] != 0)
+	{
+		free(split[ct]);
+		ct++;
+	}
+	free(split);
 }

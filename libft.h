@@ -6,7 +6,7 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:36:50 by amejia            #+#    #+#             */
-/*   Updated: 2023/02/23 20:21:46 by amejia           ###   ########.fr       */
+/*   Updated: 2023/03/06 17:23:12 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,6 @@ char	*get_next_line(int fd);
 int		ft_abs(int x);
 int		ft_min(int a, int b);
 int		ft_max(int a, int b);
+void	ft_free_split(char **split);
 
 #endif
