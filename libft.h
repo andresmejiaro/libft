@@ -6,7 +6,7 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:36:50 by amejia            #+#    #+#             */
-/*   Updated: 2023/03/06 17:23:12 by amejia           ###   ########.fr       */
+/*   Updated: 2023/03/13 19:03:21 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ size_t	ft_strlcat(char *s1, char *s2, size_t nb);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	ft_putnbr_fd(int nb, int fd);
 char	*ft_strchr(const char *s, int c);
+char	*ft_strchr_esc(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
