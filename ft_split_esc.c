@@ -6,7 +6,7 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 23:55:57 by amejia            #+#    #+#             */
-/*   Updated: 2023/03/13 19:10:54 by amejia           ###   ########.fr       */
+/*   Updated: 2023/03/13 22:11:52 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ static int	count_lines_esc(char *text, char find)
 	while (*text != '\0')
 	{
 		if (*text != find && (*(text + 1) == find || *(text + 1) == '\0') && \
-		!((text - orig) > 2 && (*(text - 1)) == '\\' && (*(text - 2)) == \
-			'\\'))
+		!((text - orig) > 1 && (*(text - 1)) == '\\'))
 			counter++;
 		text++;
 	}
