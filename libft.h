@@ -83,5 +83,6 @@ int		ft_max(int a, int b);
 void	ft_free_split(char **split);
 char	**ft_split_esc(char *s, char c);
 void	ft_delete_char(char *str);
+char	*ft_min_str(char *s1, char *s2);
 
 #endif

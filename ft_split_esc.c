@@ -29,19 +29,6 @@ static int	count_lines_esc(char *text, char find)
 	return (counter);
 }
 
-static char	*ft_min_str(char *s1, char *s2)
-{
-	if (s1 == 0 && s2 == 0)
-		return (0);
-	if (s1 == 0)
-		return (s2);
-	if (s2 == 0)
-		return (s1);
-	if (s1 < s2)
-		return (s1);
-	return (s2);
-}
-
 static int	ft_split_loop_esc(char **matrix, char *s, int n_lines, char c)
 {
 	int		length;

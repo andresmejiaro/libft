@@ -26,7 +26,7 @@ static int	count_lines(char *text, char find)
 	return (counter);
 }
 
-static char	*ft_min_str(char *s1, char *s2)
+char	*ft_min_str(char *s1, char *s2)
 {
 	if (s1 == 0 && s2 == 0)
 		return (0);
