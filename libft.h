@@ -6,7 +6,7 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:36:50 by amejia            #+#    #+#             */
-/*   Updated: 2023/03/13 22:30:50 by amejia           ###   ########.fr       */
+/*   Updated: 2023/03/29 20:53:56 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ void	ft_free_split(char **split);
 char	**ft_split_esc(char *s, char c);
 void	ft_delete_char(char *str);
 char	*ft_min_str(char *s1, char *s2);
+float	ft_atof(char *str);
 
 #endif

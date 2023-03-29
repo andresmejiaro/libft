@@ -6,9 +6,11 @@
 /*   By: amejia <amejia@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 23:50:38 by amejia            #+#    #+#             */
-/*   Updated: 2023/01/17 13:13:11 by amejia           ###   ########.fr       */
+/*   Updated: 2023/03/29 21:59:02 by amejia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	check_space(char c)
 {
@@ -57,4 +59,25 @@ int	ft_atoi(char *str)
 	if (cumulative_sign % 2 == 1)
 		cumulative_sum = -cumulative_sum;
 	return (cumulative_sum);
+}
+
+float	ft_atof(char *str)
+{
+	char				*dot;
+	int					num[2];
+	unsigned int		ct;
+	float				p10;
+
+	dot = ft_strchr(str, '.');
+	if (dot == 0)
+		return ((float)ft_atoi(str));
+	num[0] = ft_atoi(str);
+	num[1] = ft_atoi(dot +1);
+	ct = 0;
+	p10 = 1;
+	while (ct++ < ft_strlen(dot +1))
+		p10 /= 10;
+	if (num[0] < 0)
+		num[1] *= -1;
+	return (num[0] + num[1] * p10);
 }
